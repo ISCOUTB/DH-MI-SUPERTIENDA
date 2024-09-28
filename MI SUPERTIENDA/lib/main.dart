@@ -9,14 +9,16 @@ import 'screens/supermarkets_screen.dart';
 import 'screens/cart_screen.dart';
 import 'screens/profile_screen.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Mi Super App',
       theme: ThemeData(
         primarySwatch: Colors.blue,

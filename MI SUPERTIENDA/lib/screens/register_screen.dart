@@ -21,7 +21,7 @@ class RegisterScreen extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             // Campo de nombre
-            Container(
+            SizedBox(
               width: 300,
               child: TextField(
                 decoration: InputDecoration(
@@ -34,7 +34,7 @@ class RegisterScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             // Campo de apellido
-            Container(
+            SizedBox(
               width: 300,
               child: TextField(
                 decoration: InputDecoration(
@@ -47,7 +47,7 @@ class RegisterScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             // Campo de correo electrónico
-            Container(
+            SizedBox(
               width: 300,
               child: TextField(
                 decoration: InputDecoration(
@@ -60,7 +60,7 @@ class RegisterScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             // Campo de contraseña
-            Container(
+            SizedBox(
               width: 300,
               child: TextField(
                 obscureText: true,
@@ -74,7 +74,7 @@ class RegisterScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             // Campo de confirmación de contraseña
-            Container(
+            SizedBox(
               width: 300,
               child: TextField(
                 obscureText: true,

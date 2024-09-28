@@ -9,8 +9,8 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Perfil'),
       ),
-      body: Center(
-        child: const Text('Pantalla de Perfil'),
+      body: const Center(
+        child: Text('Pantalla de Perfil'),
       ),
     );
   }

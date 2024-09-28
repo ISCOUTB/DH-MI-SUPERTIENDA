@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             // Campo de correo electrónico
-            Container(
+            SizedBox(
               width: 300,
               child: TextField(
                 decoration: InputDecoration(
@@ -34,7 +34,7 @@ class LoginScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             // Campo de contraseña
-            Container(
+            SizedBox(
               width: 300,
               child: TextField(
                 obscureText: true,
