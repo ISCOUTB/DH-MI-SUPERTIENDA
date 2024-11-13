@@ -1,7 +1,0 @@
-organization=isco-utb
-projectKey=ISCOUTB_DH-MI-SUPERTIENDA
-serverUrl=https://sonarcloud.io
-serverVersion=8.0.0.57625
-dashboardUrl=https://sonarcloud.io/dashboard?id=ISCOUTB_DH-MI-SUPERTIENDA
-ceTaskId=AZMeUzRWJl15y_u-CG_D
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZMeUzRWJl15y_u-CG_D
