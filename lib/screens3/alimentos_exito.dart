@@ -1,147 +1,75 @@
-import 'dart:convert';
+// screens2/tecnologia_screen.dart
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:mi_super_tienda/screens2/supermercado1_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../models/product.dart';
 import '../providers/cart_provider.dart';
 
-class AlimentosexitoScreen extends StatefulWidget {
+class AlimentosexitoScreen extends StatelessWidget {
   const AlimentosexitoScreen({super.key});
 
-  @override
-  _AlimentosexitoScreenState createState() => _AlimentosexitoScreenState();
-}
-
-class _AlimentosexitoScreenState extends State<AlimentosexitoScreen> {
-  List<Product> products = [];
-  final ImagePicker _picker = ImagePicker();
-  String storeName = "Alimentos Exito"; // Store name can be dynamic if needed
-  String categoryName = "Alimentos"; // Category name can also be dynamic
-
-  @override
-  void initState() {
-    super.initState();
-    _loadProducts();
-  }
-
-  // Cargar los productos de una tienda y categoría específica
-  Future<void> _loadProducts() async {
-  final prefs = await SharedPreferences.getInstance();
-  final productListString = prefs.getString('$storeName-$categoryName') ?? '[]';
-  final List<dynamic> productListJson = jsonDecode(productListString);
-
-  setState(() {
-    products = productListJson.map((json) => Product.fromJson(json)).toList();
-  });
-}
-
-  // Guardar los productos de una tienda y categoría específica
-  Future<void> _saveProducts() async {
-    final prefs = await SharedPreferences.getInstance();
-    final List<Map<String, dynamic>> jsonList =
-        products.map((product) => product.toJson()).toList();
-    await prefs.setString('$storeName-$categoryName', jsonEncode(jsonList));
-  }
-
-  void _addProduct(String title, String imageUrl, double price) {
-  setState(() {
-    // Agrega el producto con store y category
-    products.add(Product(
-      id: DateTime.now().toString(),
-      title: title,
-      image: imageUrl,
-      price: price,
-      store: storeName,  // Asocia el producto con la tienda
-      category: categoryName,  // Asocia el producto con la categoría
-    ));
-  });
-  _saveProducts(); // Guarda los productos después de agregar uno nuevo
-}
-
-  Future<void> _showAddProductDialog() async {
-    final _titleController = TextEditingController();
-    final _priceController = TextEditingController();
-    final _imageUrlController = TextEditingController();
-    String? _selectedImage;
-
-    await showDialog(
-      context: context,
-      builder: (ctx) => StatefulBuilder(
-        builder: (context, setState) {
-          return AlertDialog(
-            title: const Text('Agregar Producto'),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                TextField(
-                  controller: _titleController,
-                  decoration:
-                      const InputDecoration(labelText: 'Nombre del producto'),
-                ),
-                TextField(
-                  controller: _priceController,
-                  decoration: const InputDecoration(labelText: 'Precio'),
-                  keyboardType: TextInputType.number,
-                ),
-                const SizedBox(height: 10),
-                TextField(
-                  controller: _imageUrlController,
-                  decoration: const InputDecoration(
-                      labelText: 'URL de la imagen (opcional)'),
-                ),
-                const SizedBox(height: 10),
-                _selectedImage == null
-                    ? TextButton.icon(
-                        onPressed: () async {
-                          final pickedFile = await _picker.pickImage(
-                            source: ImageSource.gallery,
-                          );
-                          if (pickedFile != null) {
-                            setState(() {
-                              _selectedImage = pickedFile.path;
-                            });
-                          }
-                        },
-                        icon: const Icon(Icons.image),
-                        label: const Text('Seleccionar imagen'),
-                      )
-                    : Image.network(
-                        _selectedImage!,
-                        height: 80,
-                        fit: BoxFit.cover,
-                      ),
-              ],
-            ),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(ctx).pop();
-                },
-                child: const Text('Cancelar'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  final title = _titleController.text;
-                  final price = double.tryParse(_priceController.text) ?? 0.0;
-                  final imageUrl = _imageUrlController.text.isNotEmpty
-                      ? _imageUrlController.text
-                      : _selectedImage;
-
-                  if (title.isNotEmpty && price > 0 && imageUrl != null) {
-                    _addProduct(title, imageUrl, price);
-                    Navigator.of(ctx).pop();
-                  }
-                },
-                child: const Text('Guardar'),
-              ),
-            ],
-          );
-        },
-      ),
-    );
-  }
+  final List<Product> products = const [
+    Product(
+      id: 'p1',
+      title: 'producto1',
+      image: 'assets/productos/producto2.jpg',
+      price: 10000,
+    ),
+    Product(
+      id: 'p2',
+      title: 'producto2',
+      image: 'assets/productos/producto3.jpg',
+      price: 20000,
+    ),
+    Product(
+      id: 'p3',
+      title: 'producto3',
+      image: 'assets/productos/producto4.jpg',
+      price: 15000,
+    ),
+    Product(
+      id: 'p4',
+      title: 'producto4',
+      image: 'assets/productos/producto5.jpg',
+      price: 25000,
+    ),
+    Product(
+      id: 'p5',
+      title: 'producto5',
+      image: 'assets/productos/producto6.jpg',
+      price: 50000,
+    ),
+    Product(
+      id: 'p6',
+      title: 'producto6',
+      image: 'assets/productos/producto7.jpg',
+      price: 17000,
+    ),
+    Product(
+      id: 'p7',
+      title: 'producto7',
+      image: 'assets/productos/producto8.jpg',
+      price: 45000,
+    ),
+    Product(
+      id: 'p8',
+      title: 'producto8',
+      image: 'assets/productos/producto9.jpg',
+      price: 35000,
+    ),
+    Product(
+      id: 'p9',
+      title: 'producto9',
+      image: 'assets/productos/producto10.jpg',
+      price: 50000,
+    ),
+    Product(
+      id: 'p10',
+      title: 'producto10',
+      image: 'assets/productos/legumbres.jpg',
+      price: 5000,
+    ),
+    // Agrega más productos según sea necesario
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -155,30 +83,14 @@ class _AlimentosexitoScreenState extends State<AlimentosexitoScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: GridView.builder(
-              itemCount: products.length + 1,
+              itemCount: products.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 8,
-                mainAxisSpacing: 8.0,
-                crossAxisSpacing: 8.0,
-                childAspectRatio: 2 / 2.5,
+                crossAxisCount: 8, // Número de columnas
+                mainAxisSpacing: 10.0,
+                crossAxisSpacing: 10.0,
+                childAspectRatio: 2 / 3, // Ajusta según el diseño
               ),
               itemBuilder: (context, index) {
-                if (index == products.length) {
-                  return InkWell(
-                    onTap: _showAddProductDialog,
-                    child: Card(
-                      color: Colors.grey[300],
-                      child: const Center(
-                        child: Text(
-                          'Agregar Producto',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                  );
-                }
                 final product = products[index];
                 return ProductCard(product: product);
               },
@@ -216,12 +128,12 @@ class ProductCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.0),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.stretch, // Para que la imagen ocupe todo el ancho
         children: [
           Expanded(
             child: ClipRRect(
               borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
-              child: Image.network(
+              child: Image.asset(
                 product.image,
                 fit: BoxFit.cover,
               ),
@@ -232,7 +144,7 @@ class ProductCard extends StatelessWidget {
             child: Text(
               product.title,
               style: const TextStyle(
-                fontSize: 14.0,
+                fontSize: 16.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -242,7 +154,7 @@ class ProductCard extends StatelessWidget {
             child: Text(
               '\$${product.price.toStringAsFixed(2)}',
               style: const TextStyle(
-                fontSize: 13.0,
+                fontSize: 14.0,
                 color: Colors.green,
               ),
             ),

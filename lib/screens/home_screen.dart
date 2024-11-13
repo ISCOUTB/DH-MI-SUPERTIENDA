@@ -19,89 +19,85 @@ class HomeScreen extends StatelessWidget {
           ),
           // Rectángulo flotante con logo y botones
           Center(
-            child: Container(
-              width: 300, // Ajustamos el ancho del rectángulo
-              height: 550, // Ajustamos el alto para acomodar el nuevo botón
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.8), // Fondo blanco semitransparente
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.black26, // Sombra
-                    blurRadius: 15,
-                    spreadRadius: 5,
-                    offset: Offset(0, 5),
+            child: FractionallySizedBox(
+              widthFactor: 0.85, // Ocupa el 85% del ancho de la pantalla
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.8), // Fondo blanco semitransparente
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 15,
+                      spreadRadius: 5,
+                      offset: Offset(0, 5),
+                    ),
+                  ],
+                  border: Border.all(
+                    color: Colors.grey.withOpacity(0.5),
+                    width: 1,
                   ),
-                ],
-                border: Border.all(
-                  color: Colors.grey.withOpacity(0.5), // Borde sutil
-                  width: 1,
                 ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // Logo más grande
-                  Image.asset(
-                    'assets/logo.png',
-                    width: 300, // Tamaño ajustado del logo
-                  ),
-                  const SizedBox(height: 30), // Espaciado mayor
-                  // Botón de Iniciar Sesión
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/login');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blueAccent,
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 15,
-                          horizontal: 40), // Aumentamos el tamaño del botón
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      textStyle: const TextStyle(fontSize: 18), // Tamaño de texto
+                child: Column(
+                  mainAxisSize: MainAxisSize.min, // Se adapta al contenido
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Logo adaptable al ancho
+                    FractionallySizedBox(
+                      widthFactor: 0.6, // Ocupa el 60% del contenedor
+                      child: Image.asset('assets/logo.png'),
                     ),
-                    child: const Text('Inicio de Sesión'),
-                  ),
-                  const SizedBox(height: 25), // Espaciado entre botones
-                  // Botón de Registrarse
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/register');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.greenAccent,
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 15,
-                          horizontal: 40),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+                    const SizedBox(height: 20),
+                    // Botón de Iniciar Sesión
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/login');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blueAccent,
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        textStyle: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.045),
                       ),
-                      textStyle: const TextStyle(fontSize: 18),
+                      child: const Text('Inicio de Sesión'),
                     ),
-                    child: const Text('Registrarme'),
-                  ),
-                  const SizedBox(height: 25),
-                  // Nuevo botón "Continuar como invitado"
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/home');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey.withOpacity(0.6),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 15,
-                          horizontal: 40),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+                    const SizedBox(height: 20),
+                    // Botón de Registrarse
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/register');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.greenAccent,
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        textStyle: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.045),
                       ),
-                      textStyle: const TextStyle(fontSize: 15),
+                      child: const Text('Registrarme'),
                     ),
-                    child: const Text('Continuar como Invitado'),
-                  ),
-                ],
+                    const SizedBox(height: 20),
+                    // Nuevo botón "Continuar como invitado"
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/home');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.grey.withOpacity(0.6),
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        textStyle: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                      ),
+                      child: const Text('Continuar como Invitado'),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

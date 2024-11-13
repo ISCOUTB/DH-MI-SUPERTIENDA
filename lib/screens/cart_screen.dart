@@ -8,6 +8,7 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: AppBar(
@@ -31,12 +32,22 @@ class CartScreen extends StatelessWidget {
                       return ListTile(
                         leading: Image.network(
                           product.image,
-                          width: 50,
-                          height: 50,
+                          width: screenWidth * 0.15, // Tamaño de imagen adaptado
+                          height: screenWidth * 0.15,
                           fit: BoxFit.cover,
                         ),
-                        title: Text(product.title),
-                        subtitle: Text('\$${product.price.toStringAsFixed(2)}'),
+                        title: Text(
+                          product.title,
+                          style: TextStyle(
+                            fontSize: screenWidth * 0.045, // Tamaño del texto adaptable
+                          ),
+                        ),
+                        subtitle: Text(
+                          '\$${product.price.toStringAsFixed(2)}',
+                          style: TextStyle(
+                            fontSize: screenWidth * 0.04, // Tamaño del texto adaptable
+                          ),
+                        ),
                         trailing: IconButton(
                           icon: const Icon(Icons.delete),
                           onPressed: () {
@@ -60,10 +71,10 @@ class CartScreen extends StatelessWidget {
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      minimumSize: const Size.fromHeight(50), // Botón de altura fija
+                      minimumSize: Size.fromHeight(screenWidth * 0.12), // Tamaño adaptable del botón
                       backgroundColor: Colors.green,
-                      textStyle: const TextStyle(
-                        fontSize: 18,
+                      textStyle: TextStyle(
+                        fontSize: screenWidth * 0.05, // Tamaño del texto adaptable
                         fontWeight: FontWeight.bold,
                       ),
                     ),
