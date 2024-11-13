@@ -17,7 +17,7 @@ class Supermercado7Screen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Categorías ALKOSTO'),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: const Color.fromARGB(255, 0, 53, 211),
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(10),

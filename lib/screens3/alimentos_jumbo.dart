@@ -1,4 +1,3 @@
-// screens2/tecnologia_screen.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/product.dart';
@@ -12,61 +11,61 @@ class AlimentosjumboScreen extends StatelessWidget {
       id: 'p1',
       title: 'producto1',
       image: 'assets/productos/producto1.jpg',
-      price: 20000,
+      price: 8000,
     ),
     Product(
       id: 'p2',
       title: 'producto2',
       image: 'assets/productos/producto2.jpg',
-      price: 30000,
+      price: 15000,
     ),
     Product(
       id: 'p3',
       title: 'producto3',
       image: 'assets/productos/producto3.jpg',
-      price: 25000,
+      price: 15000,
     ),
     Product(
       id: 'p4',
       title: 'producto4',
       image: 'assets/productos/producto4.jpg',
-      price: 35000,
+      price: 25000,
     ),
     Product(
       id: 'p5',
       title: 'producto5',
       image: 'assets/productos/producto5.jpg',
-      price: 60000,
+      price: 50000,
     ),
     Product(
       id: 'p6',
       title: 'producto6',
       image: 'assets/productos/producto6.jpg',
-      price: 27000,
+      price: 17000,
     ),
     Product(
       id: 'p7',
       title: 'producto7',
       image: 'assets/productos/producto7.jpg',
-      price: 55000,
+      price: 45000,
     ),
     Product(
       id: 'p8',
       title: 'producto8',
       image: 'assets/productos/producto8.jpg',
-      price: 45000,
+      price: 35000,
     ),
     Product(
       id: 'p9',
       title: 'producto9',
       image: 'assets/productos/producto9.jpg',
-      price: 60000,
+      price: 50000,
     ),
     Product(
       id: 'p10',
       title: 'producto10',
       image: 'assets/productos/producto10.jpg',
-      price: 9000,
+      price: 5000,
     ),
     // Agrega más productos según sea necesario
   ];
@@ -76,23 +75,28 @@ class AlimentosjumboScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Alimentos JUMBO'),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: const Color.fromARGB(255, 42, 212, 0),
       ),
       body: Stack(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: GridView.builder(
-              itemCount: products.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 8, // Número de columnas
-                mainAxisSpacing: 10.0,
-                crossAxisSpacing: 10.0,
-                childAspectRatio: 2 / 3, // Ajusta según el diseño
-              ),
-              itemBuilder: (context, index) {
-                final product = products[index];
-                return ProductCard(product: product);
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                int crossAxisCount = (constraints.maxWidth > 600) ? 4 : 2; // Cambia el número de columnas según el ancho de la pantalla
+                return GridView.builder(
+                  itemCount: products.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: crossAxisCount, 
+                    mainAxisSpacing: 10.0,
+                    crossAxisSpacing: 10.0,
+                    childAspectRatio: 2 / 3,
+                  ),
+                  itemBuilder: (context, index) {
+                    final product = products[index];
+                    return ProductCard(product: product);
+                  },
+                );
               },
             ),
           ),
@@ -128,7 +132,7 @@ class ProductCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.0),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch, // Para que la imagen ocupe todo el ancho
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: ClipRRect(

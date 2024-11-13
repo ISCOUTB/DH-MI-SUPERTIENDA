@@ -17,7 +17,7 @@ class Supermercado5Screen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Categorías ARA'),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: const Color.fromARGB(255, 238, 18, 18),
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(10),

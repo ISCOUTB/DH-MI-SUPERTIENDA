@@ -87,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                         Navigator.pushNamed(context, '/home');
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.grey.withOpacity(0.6),
+                        backgroundColor: const Color.fromARGB(255, 255, 5, 5).withOpacity(0.6),
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),

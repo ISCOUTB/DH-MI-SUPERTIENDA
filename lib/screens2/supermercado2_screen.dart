@@ -17,7 +17,7 @@ class Supermercado2Screen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Categorías JUMBO'),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: const Color.fromARGB(255, 42, 212, 0),
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(10),

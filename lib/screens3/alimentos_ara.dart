@@ -1,4 +1,3 @@
-// lib/screens2/alimentosara_screen.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/product.dart';
@@ -12,13 +11,13 @@ class AlimentosaraScreen extends StatelessWidget {
       id: 'p1',
       title: 'producto1',
       image: 'assets/productos/producto1.jpg',
-      price: 10000,
+      price: 8000,
     ),
     Product(
       id: 'p2',
       title: 'producto2',
       image: 'assets/productos/producto2.jpg',
-      price: 20000,
+      price: 15000,
     ),
     Product(
       id: 'p3',
@@ -76,23 +75,28 @@ class AlimentosaraScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Alimentos ARA'),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: const Color.fromARGB(255, 238, 18, 18),
       ),
       body: Stack(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: GridView.builder(
-              itemCount: products.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 8, // Número de columnas
-                mainAxisSpacing: 10.0,
-                crossAxisSpacing: 10.0,
-                childAspectRatio: 2 / 3, // Ajusta según el diseño
-              ),
-              itemBuilder: (context, index) {
-                final product = products[index];
-                return ProductCard(product: product);
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                int crossAxisCount = (constraints.maxWidth > 600) ? 4 : 2; // Cambia el número de columnas según el ancho de la pantalla
+                return GridView.builder(
+                  itemCount: products.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: crossAxisCount, 
+                    mainAxisSpacing: 10.0,
+                    crossAxisSpacing: 10.0,
+                    childAspectRatio: 2 / 3,
+                  ),
+                  itemBuilder: (context, index) {
+                    final product = products[index];
+                    return ProductCard(product: product);
+                  },
+                );
               },
             ),
           ),
@@ -128,7 +132,7 @@ class ProductCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.0),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch, // Para que la imagen ocupe todo el ancho
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: ClipRRect(

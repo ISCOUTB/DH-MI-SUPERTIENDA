@@ -17,7 +17,7 @@ class Supermercado1Screen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Categorías EXITO'),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: const Color.fromARGB(255, 239, 255, 64),
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(10),

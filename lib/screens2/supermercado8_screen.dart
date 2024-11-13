@@ -17,7 +17,7 @@ class Supermercado8Screen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Categorías D1'),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: const Color.fromARGB(255, 203, 0, 0),
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(10),

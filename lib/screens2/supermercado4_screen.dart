@@ -17,7 +17,7 @@ class Supermercado4Screen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Categorías SURTIMAX'),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: const Color.fromARGB(255, 255, 31, 31),
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(10),

@@ -17,7 +17,7 @@ class Supermercado3Screen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Categorías CARULLA'),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: const Color.fromARGB(255, 77, 255, 64),
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(10),
